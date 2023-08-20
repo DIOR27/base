@@ -19,8 +19,6 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="{{ asset('argon') }}/vendor/mbd/css/mdb.min.css" rel="stylesheet">
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -41,8 +39,6 @@
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="{{ asset('argon') }}/vendor/mbd/js/mdb.min.js"></script>
         
         @stack('js')
         
