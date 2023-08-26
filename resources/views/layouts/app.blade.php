@@ -30,6 +30,16 @@
     <link type="text/css"
         href="{{ asset('argon') }}/css/argon.css?v=1.0.0"
         rel="stylesheet">
+
+    <!-- jQuery AtWho -->
+    <link id="pagestyle"
+        href="{{ asset('argon/css/jquery.atwho.min.css') }}"
+        rel="stylesheet" />
+
+    <!-- Simple Notify -->
+    <link id="pagestyle"
+        href="{{ asset('argon/css/simple-notify.min.css') }}"
+        rel="stylesheet" />
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -53,8 +63,12 @@
         @include('layouts.footers.guest')
     @endguest
 
-    <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
 
     @stack('js')
 
