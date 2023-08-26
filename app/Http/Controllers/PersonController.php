@@ -28,7 +28,16 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $person = Person::withTrashed()->where('identifier', $request->identifier)->first();
+
+        if ($person) {
+            $person->restore();
+            $person->update($request->all());
+        } else {
+            $person = Person::create($request->all());
+        }
+
+        return $person;
     }
 
     /**
@@ -52,7 +61,9 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        //
+        $person->update($request->all());
+
+        return $person;
     }
 
     /**
@@ -60,6 +71,8 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+        $person->delete();
+
+        return $person;
     }
 }

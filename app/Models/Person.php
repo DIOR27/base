@@ -12,16 +12,15 @@ class Person extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'identifier_type_id',
+        'identifier_type',
         'identifier',
         'name',
         'lastname',
         'phone',
         'address',
         'zip_code',
-        'city',
-        'state',
-        'country',
+        'city_id',
+        'country_id',
         'email',
         'gender',
         'marital_status',
@@ -32,13 +31,18 @@ class Person extends Model
         'company_id',
     ];
 
-    public function identifierType()
-    {
-        return $this->belongsTo(IdentifierType::class);
-    }
-
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }
