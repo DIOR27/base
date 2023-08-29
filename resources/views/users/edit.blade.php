@@ -165,7 +165,9 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.chatter')
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                @include('layouts.chatter')
+            </div>
         </div>
 
         @include('layouts.footers.auth')

@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->binary('logo')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->string('country_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 

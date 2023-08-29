@@ -25,7 +25,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $chatterObj = ChatterController::addChatter($this);
+
+        return view('users.create', $chatterObj);
     }
 
     /**
@@ -37,7 +39,19 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $model)
     {
-        //
+        $person = app(PersonController::class)->store($request);
+
+        $user = $model->create($request->merge([
+            'person_id' => $person->id,
+            'name' => $person->name,
+            'lastname' => $person->lastname,
+            'password' => bcrypt($request->get('password')),
+            'company_id' => auth()->user()->company_id,
+        ])->all());
+
+        ChatterController::newRecordTracking($this, auth()->user(), $request, $user);
+
+        return redirect()->route('user.edit', $user->id);
     }
 
     /**
@@ -59,7 +73,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $chatterObj = ChatterController::addChatter($this, $user->id);
+
+        return view('user.edit', compact('user'), $chatterObj);
     }
 
     /**
@@ -71,7 +87,17 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        //
+        ChatterController::updatedRecordTracking($this, auth()->user(), $request, $user);
+        $person = app(PersonController::class)->update($request, $user->person_id);
+
+        $user->update($request->merge([
+            'person_id' => $person->id,
+            'name' => $person->name,
+            'lastname' => $person->lastname,
+            'password' => $request->get('password') ? bcrypt($request->get('password')) : $user->password,
+        ])->all());
+
+        return redirect()->route('user.edit', $user->id);
     }
 
     /**
@@ -82,6 +108,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')->withStatus(__('Usuario eliminado correctamente.'));
     }
 }

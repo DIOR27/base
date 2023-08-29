@@ -19,7 +19,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
         rel="stylesheet">
-    <!-- Extra details for Live View on GitHub Pages -->
+
+    <link href="{{ asset('argon/css/bootstrap.min.css') }}"
+        rel="stylesheet">
 
     <!-- Icons -->
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css"
@@ -32,13 +34,11 @@
         rel="stylesheet">
 
     <!-- jQuery AtWho -->
-    <link id="pagestyle"
-        href="{{ asset('argon/css/jquery.atwho.min.css') }}"
+    <link href="{{ asset('argon/css/jquery.atwho.min.css') }}"
         rel="stylesheet" />
 
     <!-- Simple Notify -->
-    <link id="pagestyle"
-        href="{{ asset('argon/css/simple-notify.min.css') }}"
+    <link href="{{ asset('argon/css/simple-notify.min.css') }}"
         rel="stylesheet" />
 </head>
 
@@ -66,8 +66,7 @@
     <script src="{{ asset('argon/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
-    <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/simple-notify/dist/simple-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
 
     @stack('js')

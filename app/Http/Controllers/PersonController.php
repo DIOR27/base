@@ -28,7 +28,13 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        $person = Person::withTrashed()->where('identifier', $request->identifier)->first();
+        $request->merge(['company_id' => auth()->user()->company_id]);
+
+        $person = Person::withTrashed()->where('email', $request->email)->where('company_id', auth()->user()->company_id)->first();
+
+        if ($request->identifier) {
+            $person = Person::withTrashed()->where('identifier', $request->identifier)->where('company_id', auth()->user()->company_id)->first();
+        }
 
         if ($person) {
             $person->restore();

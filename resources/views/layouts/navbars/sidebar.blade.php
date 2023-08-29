@@ -92,7 +92,7 @@
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
+                                <a class="nav-link" href="{{ route('user.create') }}">
                                     {{ __('User profile') }}
                                 </a>
                             </li>

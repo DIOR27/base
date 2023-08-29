@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chatter;
-use App\Models\ChatterAttachment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -27,12 +26,46 @@ ChatterController extends Controller
         //
     }
 
+    
     /**
-     * Store a newly created resource in storage.
+     * La función almacena un nuevo registro de Chatter en la base de datos y devuelve una respuesta
+     * JSON que contiene todos los registros de Chatter para un nombre de clase y un ID de registro de
+     * clase determinados.
+     * 
+     * @param Request request El parámetro  es una instancia de la clase Request, que contiene
+     * todos los datos que se enviaron con la solicitud HTTP. Le permite acceder a los valores de
+     * entrada, encabezados, cookies y otra información relacionada con la solicitud. En este fragmento
+     * de código, el objeto  se utiliza para recuperar el
+     * 
+     * @return JSON respuesta JSON. Si el bloque de prueba tiene éxito, devolverá la colección de
+     * usuarios del chat en formato JSON. Si se detecta una excepción, devolverá el mensaje de error en
+     * formato JSON.
      */
     public function store(Request $request)
     {
-        
+        try {
+            $chatter = new Chatter();
+            $chatter->user_id = $request->user_id;
+            $chatter->message = $request->message;
+            $chatter->sent_at = now();
+            $chatter->class_name = $request->class_name;
+            $chatter->class_record_id = $request->class_record_id ?? null;
+            $chatter->save();
+
+            $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $request->class_name)->get();
+
+            if ($request->class_record_id) {
+                $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $request->class_name)->where('class_record_id', $request->class_record_id)->get();
+            }
+            foreach ($chatters as $chatter) {
+                $chatter->user_id = $chatter->user->name . ' ' . $chatter->user->lastname;
+            }
+
+            return response()->json($chatters);
+
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage());
+        }
     }
 
     /**
@@ -91,49 +124,9 @@ ChatterController extends Controller
         $class_record_id = $id;
 
         $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $class_name)->where('class_record_id', $class_record_id)->get();
-        $chatterUsers = User::all('id', 'firstname', 'lastname');
+        $chatterUsers = User::all('id', 'name', 'lastname');
 
         return compact('class_record_id', 'chatterUsers', 'chatters', 'class_name');
-    }
-
-    /**
-     * La función `sendMessage` en PHP guarda un mensaje en la base de datos y recupera todos los
-     * mensajes para una clase dada, opcionalmente filtrados por un ID de registro de clase.
-     *
-     * @param Request request El parámetro `` es una instancia de la clase `Request`, que se
-     * utiliza para recuperar los datos enviados en la solicitud HTTP. Contiene información como la
-     * identificación del usuario, el mensaje, el nombre de la clase y la identificación del registro
-     * de la clase.
-     *
-     * @return JSON Si el bloque de prueba tiene éxito, devolverá la colección de
-     * chaters como una respuesta JSON. Si hay un error, devolverá el mensaje de error como una
-     * respuesta JSON.
-     */
-    public function sendMessage(Request $request)
-    {
-        try {
-            $chatter = new Chatter();
-            $chatter->user_id = $request->user_id;
-            $chatter->message = $request->message;
-            $chatter->sent_at = now();
-            $chatter->class_name = $request->class_name;
-            $chatter->class_record_id = $request->class_record_id ?? null;
-            $chatter->save();
-
-            $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $request->class_name)->get();
-
-            if ($request->class_record_id) {
-                $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $request->class_name)->where('class_record_id', $request->class_record_id)->get();
-            }
-            foreach ($chatters as $chatter) {
-                $chatter->user_id = $chatter->user->firstname . ' ' . $chatter->user->lastname;
-            }
-
-            return response()->json($chatters);
-
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage());
-        }
     }
 
     public static function newRecordTracking(Controller $controller, User $user, Request $request, Model $model = null)

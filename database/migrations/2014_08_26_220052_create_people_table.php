@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('identifier')->nullable();
             $table->string('name');
             $table->string('lastname');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->text('address')->nullable();
             $table->string('zip_code', 6)->nullable();
             $table->unsignedBigInteger('city_id')->nullable();

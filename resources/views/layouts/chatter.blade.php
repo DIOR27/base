@@ -1,31 +1,17 @@
-<div class="card card-profile min-height-300 overflow-auto max-height-600">
+<div class="card card-profile min-vh-300 overflow-auto" style="max-height: 800px;">
     <div class="card-body pt-3">
         <div class="row">
             <form id="attachment-form"
                 name="attachment-form"
+                method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="text-left">
                     <div class="form-group">
-                        <div class="d-flex align-items-center">
-                            <label for="input-message"
-                                class="d-inline"
-                                style="margin-top: -0.5rem;">Mensaje</label>
-                            <div class="ms-auto">
-                                <label for="attachment"
-                                    class="btn btn-xs btn-secondary"
-                                    title="Adjuntar archivos">
-                                    <i class="fa fa-paperclip"></i>
-                                    <input type="file"
-                                        id="attachment"
-                                        class="d-none"
-                                        name="attachment[]"
-                                        multiple>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-control mention height-100"
+                        <label for="input-message">Mensaje</label>
+                        <div class="form-control mention overflow-auto"
                             id="input-message"
+                            style="height: 150px;"
                             data-users="{{ $chatterUsers }}"
                             contenteditable="true">
                         </div>
@@ -34,7 +20,7 @@
                 <div class="d-flex justify-content-center">
                     <button type="submit"
                         id="btn-send-message"
-                        class="btn btn-sm btn-dark mb-0 d-lg-block bg-gradient-secondary">Enviar</button>
+                        class="btn btn-sm btn-dark">Enviar</button>
                 </div>
             </form>
 
@@ -52,11 +38,11 @@
                         data-bs-toggle="modal"
                         data-bs-target="#userDetailsModal">
                         <i class="far fa-user-circle"></i>
-                        {{ $chatter->user->firstname . ' ' . $chatter->user->lastname }}
+                        {{ $chatter->user->name . ' ' . $chatter->user->lastname }}
                     </a>
                 </div>
                 <div style="margin-top: -0.9rem;">
-                    <i class="fas fa-clock text-secondary"
+                    <i class="fas fa-clock text-dark"
                         style="font-size: 8pt;"></i>
                     <span style="font-size: 8pt;">{{ $chatter->sent_at }}</span>
                 </div>
@@ -134,14 +120,15 @@
     <script>
         let selectedUsers = [];
 
+        const attachmentForm = document.getElementById('attachment-form');
         const users = JSON.parse($('#input-message').attr('data-users'));
 
         $('#input-message').atwho({
             at: "@",
             data: users,
-            displayTpl: "<li data-value='@${id}'>${firstname} ${lastname}</li>",
-            insertTpl: "<a id='@${id}' href='/profile/${id}'>@${firstname} ${lastname}</a>",
-            searchKey: "firstname",
+            displayTpl: "<li data-value='@${id}'>${name} ${lastname}</li>",
+            insertTpl: "<a id='@${id}' href='/profile/${id}'>@${name} ${lastname}</a>",
+            searchKey: "name",
             searchKey: "lastname",
             callbacks: {
                 beforeInsert: function(value, $li) {
@@ -156,7 +143,8 @@
         attachmentForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
-            if ($('#input-message').text($('#input-message').text().trim()) === '') {
+            $('#input-message').text($('#input-message').text().trim());
+            if ($('#input-message').text() === '') {
                 sendNotification('error', 'Error', 'El mensaje no puede estar vacío.', 'slide');
                 $('#input-message').focus();
                 return;
@@ -185,11 +173,11 @@
                                 '<a href="#" id="user' + data[i].user.id +
                                 '" class="text-success userDetails"' +
                                 'data-bs-toggle="modal" data-bs-target="#userDetailsModal">' +
-                                '<i class="far fa-user-circle"></i> ' + data[i].user.firstname +
+                                '<i class="far fa-user-circle"></i> ' + data[i].user.name +
                                 ' ' +
                                 data[i]
                                 .user.lastname +
-                                '</a> </div> <div style="margin-top: -0.9rem;"> <i class="fas fa-clock text-secondary" style="font-size: 8pt;"></i> <span style="font-size: 8pt;">' +
+                                '</a> </div> <div style="margin-top: -0.9rem;"> <i class="fas fa-clock text-dark" style="font-size: 8pt;"></i> <span style="font-size: 8pt;">' +
                                 data[i].sent_at + '</span></div><div>' +
                                 data[i].message +
                                 '</div>');
@@ -202,6 +190,7 @@
                     }
                 });
             }
+
         });
     </script>
 @endpush
