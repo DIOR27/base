@@ -41,17 +41,24 @@ class UserController extends Controller
     {
         $person = app(PersonController::class)->store($request);
 
-        $user = $model->create($request->merge([
+        $user = User::withTrashed()->where('person_id', $person->id)->first();
+
+        $data = $request->merge([
             'person_id' => $person->id,
             'name' => $person->name,
             'lastname' => $person->lastname,
             'password' => bcrypt($request->get('password')),
-            'company_id' => auth()->user()->company_id,
-        ])->all());
+        ])->all();
+
+        if ($user) {
+            $user->update($data);
+        } else {
+            $user = $model->create($data);
+        }
 
         ChatterController::newRecordTracking($this, auth()->user(), $request, $user);
 
-        return redirect()->route('user.edit', $user->id);
+        return redirect()->route('users.edit', $user);
     }
 
     /**
@@ -75,7 +82,7 @@ class UserController extends Controller
     {
         $chatterObj = ChatterController::addChatter($this, $user->id);
 
-        return view('user.edit', compact('user'), $chatterObj);
+        return view('users.edit', compact('user'), $chatterObj);
     }
 
     /**
@@ -97,7 +104,7 @@ class UserController extends Controller
             'password' => $request->get('password') ? bcrypt($request->get('password')) : $user->password,
         ])->all());
 
-        return redirect()->route('user.edit', $user->id);
+        return redirect()->route('users.edit', $user->id);
     }
 
     /**
