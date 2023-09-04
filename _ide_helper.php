@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.20.0.
+ * Generated for Laravel 10.21.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3651,6 +3651,18 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
                         return $instance->recordPendingBatch($pendingBatch);
+        }
+                    /**
+         * Specify if commands should be serialized and restored when being batched.
+         *
+         * @param bool $serializeAndRestore
+         * @return \Illuminate\Support\Testing\Fakes\BusFake 
+         * @static 
+         */ 
+        public static function serializeAndRestore($serializeAndRestore = true)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
+                        return $instance->serializeAndRestore($serializeAndRestore);
         }
          
     }
@@ -10408,6 +10420,18 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
                         return $instance->pushedJobs();
+        }
+                    /**
+         * Specify if jobs should be serialized and restored when being "pushed" to the queue.
+         *
+         * @param bool $serializeAndRestore
+         * @return \Illuminate\Support\Testing\Fakes\QueueFake 
+         * @static 
+         */ 
+        public static function serializeAndRestore($serializeAndRestore = true)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
+                        return $instance->serializeAndRestore($serializeAndRestore);
         }
                     /**
          * Get the connection name for the queue.
@@ -18851,126 +18875,19 @@
      
 }
 
-    namespace Illuminate\Routing { 
-            /**
-     * 
-     *
-     * @mixin \Illuminate\Routing\RouteRegistrar
-     */ 
-        class Router {
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::auth()
-         * @param mixed $options
-         * @static 
-         */ 
-        public static function auth($options = [])
-        {
-                        return \Illuminate\Routing\Router::auth($options);
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
-         * @static 
-         */ 
-        public static function resetPassword()
-        {
-                        return \Illuminate\Routing\Router::resetPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
-         * @static 
-         */ 
-        public static function confirmPassword()
-        {
-                        return \Illuminate\Routing\Router::confirmPassword();
-        }
-                    /**
-         * 
-         *
-         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
-         * @static 
-         */ 
-        public static function emailVerification()
-        {
-                        return \Illuminate\Routing\Router::emailVerification();
-        }
-         
-    }
-     
-}
-
-    namespace Laravel\Ui { 
-            /**
-     * 
-     *
-     */ 
-        class UiCommand {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class AuthCommand {
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class ControllersCommand {
-         
-    }
-     
-}
-
-    namespace Illuminate\Console { 
-            /**
-     * 
-     *
-     */ 
-        class Command {
-                    /**
-         * 
-         *
-         * @see \LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::boot()
-         * @param mixed $command
-         * @static 
-         */ 
-        public static function argon($command)
-        {
-                        return \Illuminate\Console\Command::argon($command);
-        }
-         
-    }
-            /**
-     * 
-     *
-     */ 
-        class GeneratorCommand {
-         
-    }
-     
-}
-
     namespace Illuminate\Foundation\Console { 
             /**
      * 
      *
      */ 
-        class ClosureCommand {
+        class AboutCommand {
          
     }
             /**
      * 
      *
      */ 
-        class AboutCommand {
+        class ClosureCommand {
          
     }
             /**
@@ -19307,6 +19224,152 @@
      *
      */ 
         class VendorPublishCommand {
+         
+    }
+     
+}
+
+    namespace Illuminate\Console { 
+            /**
+     * 
+     *
+     */ 
+        class Command {
+                    /**
+         * 
+         *
+         * @see \LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::boot()
+         * @param mixed $command
+         * @static 
+         */ 
+        public static function argon($command)
+        {
+                        return \Illuminate\Console\Command::argon($command);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class GeneratorCommand {
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Routing\RouteRegistrar
+     */ 
+        class Router {
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::auth()
+         * @param mixed $options
+         * @static 
+         */ 
+        public static function auth($options = [])
+        {
+                        return \Illuminate\Routing\Router::auth($options);
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
+         * @static 
+         */ 
+        public static function resetPassword()
+        {
+                        return \Illuminate\Routing\Router::resetPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
+         * @static 
+         */ 
+        public static function confirmPassword()
+        {
+                        return \Illuminate\Routing\Router::confirmPassword();
+        }
+                    /**
+         * 
+         *
+         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
+         * @static 
+         */ 
+        public static function emailVerification()
+        {
+                        return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+     
+}
+
+    namespace Laravel\Ui { 
+            /**
+     * 
+     *
+     */ 
+        class UiCommand {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class AuthCommand {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class ControllersCommand {
+         
+    }
+     
+}
+
+    namespace LaravelLang\Publisher\Console { 
+            /**
+     * 
+     *
+     */ 
+        class Add {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Base {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Remove {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Reset {
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Update {
          
     }
      
@@ -20524,6 +20587,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->withCasts($casts);
+            }
+             
+                /**
+             * Execute the given Closure within a transaction savepoint if needed.
+             *
+             * @template TModelValue
+             * @param \Closure():  TModelValue  $scope
+             * @return \Illuminate\Database\Eloquent\TModelValue 
+             * @static 
+             */ 
+            public static function withSavepointIfNeeded($scope)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withSavepointIfNeeded($scope);
             }
              
                 /**

@@ -8,7 +8,7 @@
                 @csrf
                 <div class="text-left">
                     <div class="form-group">
-                        <label for="input-message">Mensaje</label>
+                        <label for="input-message">{{ __('Add message') }}</label>
                         <div class="form-control mention overflow-auto"
                             id="input-message"
                             style="height: 150px;"
@@ -20,13 +20,13 @@
                 <div class="d-flex justify-content-center">
                     <button type="submit"
                         id="btn-send-message"
-                        class="btn btn-sm btn-dark">Enviar</button>
+                        class="btn btn-sm btn-dark">{{ __('Send') }}</button>
                 </div>
             </form>
 
         </div>
         <div class="card-header text-left border-0 pt-3 text-center">
-            Registros - Mensajes
+            {{ __('Messages') }}
         </div>
         <div class="text-left"
             id="messages">
