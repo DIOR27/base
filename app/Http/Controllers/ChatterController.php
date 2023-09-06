@@ -144,7 +144,7 @@ ChatterController extends Controller
 
         $chatter = new Chatter();
         $chatter->user_id = $user->id;
-        $chatter->message = 'Nuevo registro creado';
+        $chatter->message = __('New record created');
         $chatter->sent_at = now();
         $chatter->class_name = $class_name;
         $chatter->class_record_id = $model->id;

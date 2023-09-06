@@ -58,7 +58,7 @@ class UserController extends Controller
 
         ChatterController::newRecordTracking($this, auth()->user(), $request, $user);
 
-        return redirect()->route('users.edit', $user);
+        return redirect()->route('user.edit', $user);
     }
 
     /**
@@ -104,7 +104,7 @@ class UserController extends Controller
             'password' => $request->get('password') ? bcrypt($request->get('password')) : $user->password,
         ])->all());
 
-        return redirect()->route('users.edit', $user->id);
+        return redirect()->route('user.edit', $user->id);
     }
 
     /**
@@ -117,6 +117,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index')->withStatus(__('Usuario eliminado correctamente.'));
+        return redirect()->route('user.index')->withStatus(__('User deleted succesfully.'));
     }
 }
