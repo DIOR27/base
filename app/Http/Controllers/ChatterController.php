@@ -6,6 +6,7 @@ use App\Models\Chatter;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Jenssegers\Date\Date;
 
 class
 ChatterController extends Controller
@@ -26,17 +27,16 @@ ChatterController extends Controller
         //
     }
 
-    
     /**
      * La función almacena un nuevo registro de Chatter en la base de datos y devuelve una respuesta
      * JSON que contiene todos los registros de Chatter para un nombre de clase y un ID de registro de
      * clase determinados.
-     * 
+     *
      * @param Request request El parámetro  es una instancia de la clase Request, que contiene
      * todos los datos que se enviaron con la solicitud HTTP. Le permite acceder a los valores de
      * entrada, encabezados, cookies y otra información relacionada con la solicitud. En este fragmento
      * de código, el objeto  se utiliza para recuperar el
-     * 
+     *
      * @return JSON respuesta JSON. Si el bloque de prueba tiene éxito, devolverá la colección de
      * usuarios del chat en formato JSON. Si se detecta una excepción, devolverá el mensaje de error en
      * formato JSON.
@@ -48,6 +48,7 @@ ChatterController extends Controller
             $chatter->user_id = $request->user_id;
             $chatter->message = $request->message;
             $chatter->sent_at = now();
+
             $chatter->class_name = $request->class_name;
             $chatter->class_record_id = $request->class_record_id ?? null;
             $chatter->save();
@@ -59,6 +60,8 @@ ChatterController extends Controller
             }
             foreach ($chatters as $chatter) {
                 $chatter->user_id = $chatter->user->name . ' ' . $chatter->user->lastname;
+                $date = new Date($chatter->sent_at);
+                $chatter->sent_at = $date->ago();
             }
 
             return response()->json($chatters);
@@ -124,6 +127,12 @@ ChatterController extends Controller
         $class_record_id = $id;
 
         $chatters = Chatter::orderBy('sent_at', 'desc')->where('class_name', $class_name)->where('class_record_id', $class_record_id)->get();
+        foreach ($chatters as $chatter) {
+            $chatter->user_id = $chatter->user->name . ' ' . $chatter->user->lastname;
+            $date = new Date($chatter->sent_at);
+            $chatter->sent_at = $date->ago();
+        }
+
         $chatterUsers = User::all('id', 'name', 'lastname');
 
         return compact('class_record_id', 'chatterUsers', 'chatters', 'class_name');

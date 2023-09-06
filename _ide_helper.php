@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.21.0.
+ * Generated for Laravel 10.20.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3652,18 +3652,6 @@
                         /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
                         return $instance->recordPendingBatch($pendingBatch);
         }
-                    /**
-         * Specify if commands should be serialized and restored when being batched.
-         *
-         * @param bool $serializeAndRestore
-         * @return \Illuminate\Support\Testing\Fakes\BusFake 
-         * @static 
-         */ 
-        public static function serializeAndRestore($serializeAndRestore = true)
-        {
-                        /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
-                        return $instance->serializeAndRestore($serializeAndRestore);
-        }
          
     }
             /**
@@ -4896,142 +4884,6 @@
         {
                         /** @var \Illuminate\Encryption\Encrypter $instance */
                         return $instance->getKey();
-        }
-         
-    }
-            /**
-     * 
-     *
-     * @see https://carbon.nesbot.com/docs/
-     * @see https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Factory.php
-     * @method static \Illuminate\Support\Carbon create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromDate($year = null, $month = null, $day = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon|false createFromFormat($format, $time, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTime($hour = 0, $minute = 0, $second = 0, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimeString($time, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestamp($timestamp, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestampMs($timestamp, $tz = null)
-     * @method static \Illuminate\Support\Carbon createFromTimestampUTC($timestamp)
-     * @method static \Illuminate\Support\Carbon createMidnightDate($year = null, $month = null, $day = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
-     * @method static void disableHumanDiffOption($humanDiffOption)
-     * @method static void enableHumanDiffOption($humanDiffOption)
-     * @method static mixed executeWithLocale($locale, $func)
-     * @method static \Illuminate\Support\Carbon fromSerialized($value)
-     * @method static array getAvailableLocales()
-     * @method static array getDays()
-     * @method static int getHumanDiffOptions()
-     * @method static array getIsoUnits()
-     * @method static array getLastErrors()
-     * @method static string getLocale()
-     * @method static int getMidDayAt()
-     * @method static \Illuminate\Support\Carbon|null getTestNow()
-     * @method static \Symfony\Component\Translation\TranslatorInterface getTranslator()
-     * @method static int getWeekEndsAt()
-     * @method static int getWeekStartsAt()
-     * @method static array getWeekendDays()
-     * @method static bool hasFormat($date, $format)
-     * @method static bool hasMacro($name)
-     * @method static bool hasRelativeKeywords($time)
-     * @method static bool hasTestNow()
-     * @method static \Illuminate\Support\Carbon instance($date)
-     * @method static bool isImmutable()
-     * @method static bool isModifiableUnit($unit)
-     * @method static bool isMutable()
-     * @method static bool isStrictModeEnabled()
-     * @method static bool localeHasDiffOneDayWords($locale)
-     * @method static bool localeHasDiffSyntax($locale)
-     * @method static bool localeHasDiffTwoDayWords($locale)
-     * @method static bool localeHasPeriodSyntax($locale)
-     * @method static bool localeHasShortUnits($locale)
-     * @method static void macro($name, $macro)
-     * @method static \Illuminate\Support\Carbon|null make($var)
-     * @method static \Illuminate\Support\Carbon maxValue()
-     * @method static \Illuminate\Support\Carbon minValue()
-     * @method static void mixin($mixin)
-     * @method static \Illuminate\Support\Carbon now($tz = null)
-     * @method static \Illuminate\Support\Carbon parse($time = null, $tz = null)
-     * @method static string pluralUnit(string $unit)
-     * @method static void resetMonthsOverflow()
-     * @method static void resetToStringFormat()
-     * @method static void resetYearsOverflow()
-     * @method static void serializeUsing($callback)
-     * @method static void setHumanDiffOptions($humanDiffOptions)
-     * @method static bool setLocale($locale)
-     * @method static void setMidDayAt($hour)
-     * @method static void setTestNow($testNow = null)
-     * @method static void setToStringFormat($format)
-     * @method static void setTranslator(\Symfony\Component\Translation\TranslatorInterface $translator)
-     * @method static void setUtf8($utf8)
-     * @method static void setWeekEndsAt($day)
-     * @method static void setWeekStartsAt($day)
-     * @method static void setWeekendDays($days)
-     * @method static bool shouldOverflowMonths()
-     * @method static bool shouldOverflowYears()
-     * @method static string singularUnit(string $unit)
-     * @method static \Illuminate\Support\Carbon today($tz = null)
-     * @method static \Illuminate\Support\Carbon tomorrow($tz = null)
-     * @method static void useMonthsOverflow($monthsOverflow = true)
-     * @method static void useStrictMode($strictModeEnabled = true)
-     * @method static void useYearsOverflow($yearsOverflow = true)
-     * @method static \Illuminate\Support\Carbon yesterday($tz = null)
-     * @see \Illuminate\Support\DateFactory
-     */ 
-        class Date {
-                    /**
-         * Use the given handler when generating dates (class name, callable, or factory).
-         *
-         * @param mixed $handler
-         * @return mixed 
-         * @throws \InvalidArgumentException
-         * @static 
-         */ 
-        public static function use($handler)
-        {
-                        return \Illuminate\Support\DateFactory::use($handler);
-        }
-                    /**
-         * Use the default date class when generating dates.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function useDefault()
-        {
-                        \Illuminate\Support\DateFactory::useDefault();
-        }
-                    /**
-         * Execute the given callable on each date creation.
-         *
-         * @param callable $callable
-         * @return void 
-         * @static 
-         */ 
-        public static function useCallable($callable)
-        {
-                        \Illuminate\Support\DateFactory::useCallable($callable);
-        }
-                    /**
-         * Use the given date type (class) when generating dates.
-         *
-         * @param string $dateClass
-         * @return void 
-         * @static 
-         */ 
-        public static function useClass($dateClass)
-        {
-                        \Illuminate\Support\DateFactory::useClass($dateClass);
-        }
-                    /**
-         * Use the given Carbon factory when generating dates.
-         *
-         * @param object $factory
-         * @return void 
-         * @static 
-         */ 
-        public static function useFactory($factory)
-        {
-                        \Illuminate\Support\DateFactory::useFactory($factory);
         }
          
     }
@@ -10420,18 +10272,6 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
                         return $instance->pushedJobs();
-        }
-                    /**
-         * Specify if jobs should be serialized and restored when being "pushed" to the queue.
-         *
-         * @param bool $serializeAndRestore
-         * @return \Illuminate\Support\Testing\Fakes\QueueFake 
-         * @static 
-         */ 
-        public static function serializeAndRestore($serializeAndRestore = true)
-        {
-                        /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
-                        return $instance->serializeAndRestore($serializeAndRestore);
         }
                     /**
          * Get the connection name for the queue.
@@ -18397,6 +18237,17 @@
      
 }
 
+    namespace Jenssegers\Date { 
+            /**
+     * 
+     *
+     */ 
+        class Date {
+         
+    }
+     
+}
+
         namespace Spatie\LaravelIgnition\Facades { 
             /**
      * 
@@ -19892,7 +19743,7 @@ namespace  {
             class Config extends \Illuminate\Support\Facades\Config {}
             class Cookie extends \Illuminate\Support\Facades\Cookie {}
             class Crypt extends \Illuminate\Support\Facades\Crypt {}
-            class Date extends \Illuminate\Support\Facades\Date {}
+            class Date extends \Jenssegers\Date\Date {}
             class DB extends \Illuminate\Support\Facades\DB {}
             class Eloquent extends \Illuminate\Database\Eloquent\Model {             
                 /**
@@ -20587,20 +20438,6 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->withCasts($casts);
-            }
-             
-                /**
-             * Execute the given Closure within a transaction savepoint if needed.
-             *
-             * @template TModelValue
-             * @param \Closure():  TModelValue  $scope
-             * @return \Illuminate\Database\Eloquent\TModelValue 
-             * @static 
-             */ 
-            public static function withSavepointIfNeeded($scope)
-            {
-                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
-                                return $instance->withSavepointIfNeeded($scope);
             }
              
                 /**
