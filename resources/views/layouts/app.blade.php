@@ -58,8 +58,8 @@
         @yield('content')
     </div>
 
-    @include('layouts.feedback')
-
+    @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
+        @include('layouts.footers.feedback') @endif
     @guest()
         @include('layouts.footers.guest')
     @endguest
