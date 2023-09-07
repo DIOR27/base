@@ -59,7 +59,9 @@
     </div>
 
     @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
-        @include('layouts.footers.feedback') @endif
+        @include('layouts.feedback') 
+    @endif
+    
     @guest()
         @include('layouts.footers.guest')
     @endguest
