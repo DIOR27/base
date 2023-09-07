@@ -38,8 +38,8 @@
                                 <div class="row">
                                     <div class="col-md">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label"
-                                                for="input-name">{{ __('Nombre') }}</label>
+                                            <label class="form-control-label text-wrap text-break"
+                                                for="input-name">{{ __('Name') }}</label>
                                             <input type="text"
                                                 name="name"
                                                 id="input-name"
