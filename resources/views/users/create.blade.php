@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-md">
                                         <div class="form-group{{ $errors->has('lastname') ? ' has-danger' : '' }}">
-                                            <label class="form-control-label"
+                                            <label class="form-control-label text-wrap text-break"
                                                 for="input-name">{{ __('Apellido') }}</label>
                                             <input type="text"
                                                 name="lastname"
@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label"
+                                    <label class="form-control-label text-wrap text-break"
                                         for="input-email">{{ __('Correo electrónico') }}</label>
                                     <input type="email"
                                         name="email"
@@ -98,7 +98,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label"
+                                    <label class="form-control-label text-wrap text-break"
                                         for="input-password">{{ __('Contraseña') }}</label>
                                     <input type="password"
                                         name="password"
@@ -116,7 +116,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label"
+                                    <label class="form-control-label text-wrap text-break"
                                         for="input-password-confirmation">{{ __('Confirmar contraseña') }}</label>
                                     <input type="password"
                                         name="password_confirmation"
