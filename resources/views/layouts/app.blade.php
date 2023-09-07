@@ -58,7 +58,7 @@
         @yield('content')
     </div>
 
-    @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
+    @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register' && Route::currentRouteName() != 'welcome')
         @include('layouts.feedback') 
     @endif
     
