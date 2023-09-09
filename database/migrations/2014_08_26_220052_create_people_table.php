@@ -33,9 +33,9 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

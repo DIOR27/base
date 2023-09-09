@@ -14,7 +14,32 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
-                            <h3 class="mb-0">{{ __('Edit Profile') }}</h3>
+                            <div class="col">
+                                <h3 class="mb-0">{{ __('Edit Profile') }}</h3>
+                            </div>
+                            <div class="col-auto">
+                                <div class="dropdown show">
+                                    <a class="btn btn-sm btn-secondary dropdown-toggle"
+                                        href="#"
+                                        role="button"
+                                        id="dropdownMenuLink"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fas fa-user-cog"></i>
+                                        {{ __('Action') }}
+                                    </a>
+                                    <div class="dropdown-menu"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item"
+                                            href="#">{{ __('Duplicate') }}</a>
+                                        <a class="dropdown-item"
+                                            href="#">{{ __('Archive') }}</a>
+                                        <a class="dropdown-item"
+                                            href="#">{{ __('Delete') }}</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">

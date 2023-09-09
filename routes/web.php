@@ -36,4 +36,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
     Route::resource('chatter', App\Http\Controllers\ChatterController::class);
+    Route::resource('tool', App\Http\Controllers\ToolController::class, ['except' => ['show', 'edit', 'create']]);
 });
