@@ -36,6 +36,7 @@
                             @endif
                             <div class="pl-lg-4">
                                 <div class="row">
+                                        @include('layouts.inputs.imageSelector', ['labelText' => __('Hola'), 'inputName' => 'avatar'])
                                     <div class="col-md">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                             <label class="form-control-label text-wrap text-break"

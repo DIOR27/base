@@ -71,6 +71,7 @@
     <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/simple-notify/dist/simple-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
+    <script src="{{ asset('argon/vendor/bsCustomFileInput/bsCustomFileInput.min.js') }}"></script>
 
     @stack('js')
 
