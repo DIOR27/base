@@ -45,4 +45,13 @@ class Person extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    public function profilePhoto()
+    {
+        if ($this->photo) {
+            return "/storage/{$this->photo}";
+        }
+
+        //return asset('img/default-avatar.png');
+    }
 }

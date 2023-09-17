@@ -26,7 +26,7 @@ return new class extends Migration
             $table->enum('gender',[0,1,2])->default(0);
             $table->enum('marital_status',[0,1,2,3,4,5,6])->default(0);
             $table->date('birthdate')->nullable();
-            $table->binary('photo')->nullable();
+            $table->string('photo')->nullable();
             $table->string('job_position')->nullable();
             $table->string('title')->nullable();
             $table->unsignedBigInteger('company_id')->nullable();

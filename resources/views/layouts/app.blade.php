@@ -40,6 +40,8 @@
     <!-- Simple Notify -->
     <link href="{{ asset('argon/css/simple-notify.min.css') }}"
         rel="stylesheet" />
+
+    @laravelPWA
 </head>
 
 <body class="{{ $class ?? '' }}">

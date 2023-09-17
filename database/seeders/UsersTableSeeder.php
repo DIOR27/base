@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'person_id' => $person->id,
+            'company_id' => $person->company_id,
             'name' => $person->name,
             'lastname' => $person->lastname,
             'email' => $person->email,

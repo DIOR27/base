@@ -19,7 +19,8 @@
                     <div class="card-body">
                         <form method="post"
                             action="{{ route('user.store') }}"
-                            autocomplete="off">
+                            autocomplete="off"
+                            enctype="multipart/form-data">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">{{ __('Información del usuario') }}</h6>
                             @if (session('status'))
@@ -36,7 +37,10 @@
                             @endif
                             <div class="pl-lg-4">
                                 <div class="row">
-                                        @include('layouts.inputs.imageSelector', ['labelText' => __('Hola'), 'inputName' => 'avatar'])
+                                    @include('layouts.inputs.imageSelector', [
+                                        'labelText' => __('Upload a profile picture'),
+                                        'inputName' => 'photo',
+                                    ])
                                     <div class="col-md">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                             <label class="form-control-label text-wrap text-break"
@@ -106,7 +110,7 @@
                                         id="input-password"
                                         class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                         placeholder="{{ __('Enter a password') }}"
-                                        value="123456"
+                                        value="Aleman001."
                                         required>
 
                                     @if ($errors->has('password'))
@@ -124,7 +128,7 @@
                                         id="input-password-confirmation"
                                         class="form-control form-control-alternative"
                                         placeholder="{{ __('Re-enter a password') }}"
-                                        value="123456"
+                                        value="Aleman001."
                                         required>
                                 </div>
                                 <div class="text-center">

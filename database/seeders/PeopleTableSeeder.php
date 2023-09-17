@@ -17,6 +17,7 @@ class PeopleTableSeeder extends Seeder
             'lastname' => 'Admin',
             'phone' => '1234567890',
             'email' => 'admin@argon.com',
+            'company_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

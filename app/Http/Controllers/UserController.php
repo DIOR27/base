@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index');
+        $users = $model->with('person')->where('company_id', auth()->user()->company_id)->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -42,9 +44,9 @@ class UserController extends Controller
         $person = app(PersonController::class)->store($request);
 
         $user = User::withTrashed()->where('person_id', $person->id)->first();
-
         $data = $request->merge([
             'person_id' => $person->id,
+            'company_id' => $person->company_id,
             'name' => $person->name,
             'lastname' => $person->lastname,
             'password' => bcrypt($request->get('password')),
