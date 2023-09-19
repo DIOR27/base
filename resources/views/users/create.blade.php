@@ -39,7 +39,7 @@
                                 <div class="row">
                                     @include('layouts.inputs.imageSelector', [
                                         'labelText' => __('Upload a profile picture'),
-                                        'inputName' => 'photo',
+                                        'inputName' => 'profile_picture',
                                     ])
                                     <div class="col-md">
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

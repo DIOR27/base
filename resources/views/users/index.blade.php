@@ -42,11 +42,11 @@
                                         <td>
                                             <span class="avatar avatar-sm rounded-circle">
                                                 <img class="avatar border-gray"
-                                                    src="{{ $user->person->profilePhoto() }}"
+                                                    src="{{ asset('storage/' . $user->person->photo) }}"
                                                     alt="...">
                                             </span>
                                         </td>
-                                        <td>{{ $user->person->profilePhoto() }}</td>
+                                        <td>{{ asset('storage/' . $user->person->photo) }}</td>
                                         <td>{!! $user->name . ' ' . $user->lastname !!}</td>
                                         <td>
                                             <a href="mailto:{!! $user->email !!}">{!! $user->email !!}</a>

@@ -18,12 +18,14 @@
         </div>
         <div class="border rounded-lg text-center p-3">
             <img src="{{ asset('argon/img/theme/image.jpg') }}"
-                class="img-fluid" style="max-height: 140px;"
+                class="img-fluid"
+                style="max-height: 140px;"
                 id="preview" />
         </div>
     </div>
 </div>
 
 @push('js')
+    <script src="{{ asset('argon/vendor/bsCustomFileInput/bsCustomFileInput.min.js') }}"></script>
     <script src="{{ asset('argon/js/imageSelector.js') }}"></script>
 @endpush

@@ -29,20 +29,10 @@ class PersonController extends Controller
     public function store(Request $request)
     {
 
-        $filename = null;
-        
-        if ($request->hasFile('photo')) {
-            $filename = time() . '.' . request()->photo->getClientOriginalExtension();
-            request()->photo->move(storage_path('app/profile'), $filename);
-        }
-
-
         $request->merge([
             'company_id' => auth()->user()->company_id,
-            'photo' => $filename,
+            'photo' => $request->profile_picture ? $request->file('profile_picture')->store('profile') : null,
         ]);
-
-        dd($request->all());
 
         $person = Person::withTrashed()->where('email', $request->email)->where('company_id', auth()->user()->company_id)->first();
 
