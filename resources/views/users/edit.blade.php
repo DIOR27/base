@@ -44,7 +44,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post"
-                            action="{{ route('profile.update') }}"
+                            action="{{ route('user.update', $user) }}"
                             autocomplete="off">
                             @csrf
                             @method('put')
@@ -63,45 +63,73 @@
                                     </button>
                                 </div>
                             @endif
-
-
                             <div class="pl-lg-4">
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label"
-                                        for="input-name">{{ __('Name') }}</label>
-                                    <input type="text"
-                                        name="name"
-                                        id="input-name"
-                                        class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ __('Name') }}"
-                                        value="{{ old('name', auth()->user()->name) }}"
-                                        required
-                                        autofocus>
+                                @include('layouts.inputs.imageSelector', [
+                                    'labelText' => __('Upload a profile picture'),
+                                    'inputName' => 'photo',
+                                    'thumbnailImage' => $user->person->profilePhoto(),
+                                ])
+                                <div class="col-md">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label text-wrap text-break"
+                                            for="input-name">{{ __('Name') }}</label>
+                                        <input type="text"
+                                            name="name"
+                                            id="input-name"
+                                            class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                            placeholder="{{ __('Enter the user\'s name') }}"
+                                            value="{{ $user->name }}"
+                                            required
+                                            autofocus>
 
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback"
-                                            role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback"
+                                                role="alert">
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label"
-                                        for="input-email">{{ __('Email') }}</label>
-                                    <input type="email"
-                                        name="email"
-                                        id="input-email"
-                                        class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ __('Email') }}"
-                                        value="{{ old('email', auth()->user()->email) }}"
-                                        required>
+                                <div class="col-md">
+                                    <div class="form-group{{ $errors->has('lastname') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label text-wrap text-break"
+                                            for="input-name">{{ __('Lastname') }}</label>
+                                        <input type="text"
+                                            name="lastname"
+                                            id="input-lastname"
+                                            class="form-control form-control-alternative{{ $errors->has('lastname') ? ' is-invalid' : '' }}"
+                                            placeholder="{{ __('Enter the user\'s last name.') }}"
+                                            value="{{ $user->lastname }}"
+                                            required
+                                            autofocus>
 
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback"
-                                            role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
+                                        @if ($errors->has('lastname'))
+                                            <span class="invalid-feedback"
+                                                role="alert">
+                                                <strong>{{ $errors->first('lastname') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                                        <label class="form-control-label"
+                                            for="input-email">{{ __('Email') }}</label>
+                                        <input type="email"
+                                            name="email"
+                                            id="input-email"
+                                            class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                            placeholder="{{ __('Email') }}"
+                                            value="{{ old('email', auth()->user()->email) }}"
+                                            required>
+                                    
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback"
+                                                role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <div class="text-center">

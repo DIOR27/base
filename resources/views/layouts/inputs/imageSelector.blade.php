@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="border rounded-lg text-center p-3">
-            <img src="{{ asset('argon/img/theme/image.webp') }}"
+            <img src="{{ $thumbnailImage ?? asset('argon/img/theme/image.webp') }}"
                 class="img-fluid"
                 style="max-height: 140px;"
                 id="preview" />

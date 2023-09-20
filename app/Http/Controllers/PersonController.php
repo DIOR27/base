@@ -40,6 +40,13 @@ class PersonController extends Controller
         if ($request->photo) {
             $imageName = time() . '.' . $request->photo->extension();
             $request->photo->move(storage_path('app/public/profile'), $imageName);
+
+            if ($person && $person->photo) {
+                $existingPhotoPath = storage_path('app/public/profile/' . $person->photo);
+                if (file_exists($existingPhotoPath)) {
+                    unlink($existingPhotoPath);
+                }
+            }
         }
 
         $person = Person::updateOrcreate(
@@ -74,7 +81,24 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        $person->update($request->all());
+        $imageName = null;
+
+        if ($request->photo) {
+            $imageName = time() . '.' . $request->photo->extension();
+            $request->photo->move(storage_path('app/public/profile'), $imageName);
+
+            if ($person && $person->photo) {
+                $existingPhotoPath = storage_path('app/public/profile/' . $person->photo);
+                if (file_exists($existingPhotoPath)) {
+                    unlink($existingPhotoPath);
+                }
+            }
+        }
+
+        $person->update([
+            'photo' => $imageName,
+            'company_id' => auth()->user()->company_id,
+        ] + $request->all());
 
         return $person;
     }
