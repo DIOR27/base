@@ -29,28 +29,26 @@ class PersonController extends Controller
     public function store(Request $request)
     {
 
-        $imageName = null;
-
-        if ($request->photo) {
-            $imageName = time().'.'.$request->photo->extension();
-            $request->photo->move(storage_path('app/public/profile'), $imageName);
-        }
-
         $person = Person::withTrashed()->where('email', $request->email)->where('company_id', auth()->user()->company_id)->first();
 
         if ($request->identifier) {
             $person = Person::withTrashed()->where('identifier', $request->identifier)->where('company_id', auth()->user()->company_id)->first();
         }
 
-        if ($person) {
-            $person->restore();
-            $person->update($request->all());
-        } else {
-            $person = Person::create([
+        $imageName = null;
+
+        if ($request->photo) {
+            $imageName = time() . '.' . $request->photo->extension();
+            $request->photo->move(storage_path('app/public/profile'), $imageName);
+        }
+
+        $person = Person::updateOrcreate(
+            ['id' => $person ? $person->id : null], // Verifica si $person existe
+            [
                 'photo' => $imageName,
                 'company_id' => auth()->user()->company_id,
-            ]+ $request->all());
-        }
+            ] + $request->all()
+        );
 
         return $person;
     }
