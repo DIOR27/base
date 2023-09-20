@@ -49,9 +49,9 @@ class Person extends Model
     public function profilePhoto()
     {
         if ($this->photo) {
-            return "storage/app/profile/{$this->photo}";
+            return asset('storage/profile/' . $this->photo);
         }
 
-        return asset('img/default-avatar.png');
+        return asset('images/default/default-avatar.png');
     }
 }

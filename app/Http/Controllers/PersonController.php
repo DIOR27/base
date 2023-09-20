@@ -29,10 +29,12 @@ class PersonController extends Controller
     public function store(Request $request)
     {
 
-        $request->merge([
-            'company_id' => auth()->user()->company_id,
-            'photo' => $request->profile_picture ? $request->file('profile_picture')->store('profile') : null,
-        ]);
+        $imageName = null;
+
+        if ($request->photo) {
+            $imageName = time().'.'.$request->photo->extension();
+            $request->photo->move(storage_path('app/public/profile'), $imageName);
+        }
 
         $person = Person::withTrashed()->where('email', $request->email)->where('company_id', auth()->user()->company_id)->first();
 
@@ -44,7 +46,10 @@ class PersonController extends Controller
             $person->restore();
             $person->update($request->all());
         } else {
-            $person = Person::create($request->all());
+            $person = Person::create([
+                'photo' => $imageName,
+                'company_id' => auth()->user()->company_id,
+            ]+ $request->all());
         }
 
         return $person;

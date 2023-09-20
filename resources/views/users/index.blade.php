@@ -40,13 +40,12 @@
                                 @foreach ($users as $user)
                                     <tr>
                                         <td>
-                                            <span class="avatar avatar-sm rounded-circle">
+                                            <span class="avatar avatar-md rounded-circle">
                                                 <img class="avatar border-gray"
-                                                    src="{{ asset('storage/' . $user->person->photo) }}"
-                                                    alt="...">
+                                                    src="{{ $user->person->profilePhoto() }}"
+                                                    alt="{{ $user->person->photo }}">
                                             </span>
                                         </td>
-                                        <td>{{ asset('storage/' . $user->person->photo) }}</td>
                                         <td>{!! $user->name . ' ' . $user->lastname !!}</td>
                                         <td>
                                             <a href="mailto:{!! $user->email !!}">{!! $user->email !!}</a>
