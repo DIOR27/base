@@ -1,3 +1,9 @@
+<style>
+    .custom-file-input~.custom-file-label::after {
+        content: "{{ __('Browse') }}";
+    }
+</style>
+
 <div class="row">
     <div class="col-md-6">
         <div class="input-group mb-3">
