@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         $person = Person::find(1)->first();
 
         DB::table('users')->insert([
+            'id' => 1,
             'person_id' => $person->id,
             'company_id' => $person->company_id,
             'name' => $person->name,

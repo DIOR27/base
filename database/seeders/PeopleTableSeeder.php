@@ -13,6 +13,7 @@ class PeopleTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('people')->insert([
+            'id' => 1,
             'name' => 'LAVA',
             'lastname' => 'Admin',
             'phone' => '1234567890',
