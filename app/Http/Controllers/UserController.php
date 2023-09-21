@@ -97,7 +97,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         ChatterController::updatedRecordTracking($this, auth()->user(), $request, $user);
-        $person = app(PersonController::class)->update($request, $user->person_id);
+        $person = app(PersonController::class)->update($request, $user->person);
 
         $user->update($request->merge([
             'person_id' => $person->id,

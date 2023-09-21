@@ -81,7 +81,7 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        $imageName = null;
+        $imageName = $person->photo;
 
         if ($request->photo) {
             $imageName = time() . '.' . $request->photo->extension();
