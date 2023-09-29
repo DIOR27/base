@@ -89,13 +89,28 @@
 
 @push('js')
     <script>
+        let url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+
+        switch ('{{ auth()->user()->language }}') {
+            case 'es-ES':
+                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+                break;
+            case 'en-GB':
+                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/English.json";
+                break;
+            default:
+                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+                break;
+        }
+
         $('#datatable').DataTable({
             language: {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                "url": url
             },
-            columnDefs: [
-                { "orderable": false, "targets": 3 },
-            ],
+            columnDefs: [{
+                "orderable": false,
+                "targets": 3
+            }, ],
             stateSave: true,
             deferRender: true,
             orderClasses: false,
