@@ -89,14 +89,14 @@
 
 @push('js')
     <script>
-        let url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+        let url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/";
 
         switch ('{{ auth()->user()->language }}') {
             case 'es-ES':
-                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+                url += "Spanish.json";
                 break;
             default:
-                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/English.json";
+                url += "English.json";
                 break;
         }
 
