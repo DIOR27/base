@@ -3,7 +3,8 @@
 @section('content')
     @include('users.partials.header', [
         'title' => __('Users management'),
-        'description' => __('This is the users management page. You can see all the users and edit or delete them.'),
+        'description' => __(
+            'This is the users management page. You can see all the users and edit or delete them.'),
         'class' => 'col-lg-7',
     ])
 
@@ -18,7 +19,7 @@
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('user.create') }}"
-                                    class="btn btn-sm btn-primary">{{  __('Add') }}</a>
+                                    class="btn btn-sm btn-primary">{{ __('Add') }}</a>
                             </div>
                         </div>
                     </div>
@@ -26,8 +27,9 @@
                     <div class="col-12">
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
+                    <div class="table-responsive p-4">
+                        <table class="table align-items-center table-flush"
+                            id="datatable">
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{ __('Profile picture') }}</th>
@@ -84,3 +86,19 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $('#datatable').DataTable({
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+            },
+            columnDefs: [
+                { "orderable": false, "targets": 3 },
+            ],
+            stateSave: true,
+            deferRender: true,
+            orderClasses: false,
+        });
+    </script>
+@endpush

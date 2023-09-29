@@ -41,6 +41,10 @@
     <link href="{{ asset('argon/css/simple-notify.min.css') }}"
         rel="stylesheet" />
 
+    <!-- DataTable -->
+    <link href="{{ asset('argon/css/jquery.dataTables.min.css') }}"
+        rel="stylesheet" />
+
     @laravelPWA
 </head>
 
@@ -73,6 +77,7 @@
     <script src="{{ asset('argon/vendor/jquery.atwho/dist/jquery.atwho.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/simple-notify/dist/simple-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/jquery.dataTables.min.js') }}"></script>
 
     @stack('js')
 
