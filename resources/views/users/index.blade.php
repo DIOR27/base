@@ -95,11 +95,8 @@
             case 'es-ES':
                 url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
                 break;
-            case 'en-GB':
-                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/English.json";
-                break;
             default:
-                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json";
+                url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/English.json";
                 break;
         }
 
