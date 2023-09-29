@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('language', 5)->default('es-ES');
             $table->unsignedBigInteger('person_id');
             $table->unsignedBigInteger('company_id');
             $table->rememberToken();
