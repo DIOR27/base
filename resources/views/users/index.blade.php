@@ -64,7 +64,14 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item"
-                                                        href="">Edit</a>
+                                                        href="{{ route('user.edit', $user) }}"><i class="fas fa-pencil-alt text-primary"></i> {{ __('Edit') }}</a>
+                                                    <form action="{{ route('user.destroy', $user) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <a class="dropdown-item"
+                                                            onclick="deleteDialog()"><i class="fas fa-trash text-danger"></i> {{ __('Delete') }}</a>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
@@ -76,7 +83,6 @@
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end"
                             aria-label="...">
-
                         </nav>
                     </div>
                 </div>
@@ -89,24 +95,20 @@
 
 @push('js')
     <script>
-        let url = "//cdn.datatables.net/plug-ins/1.10.21/i18n/";
+        const languageMap = {
+            'es-ES': 'Spanish.json',
+        };
 
-        switch ('{{ auth()->user()->language }}') {
-            case 'es-ES':
-                url += "Spanish.json";
-                break;
-            default:
-                url += "English.json";
-                break;
-        }
+        const languageURL =
+            `//cdn.datatables.net/plug-ins/1.10.21/i18n/${languageMap['{{ auth()->user()->language }}'] || 'English.json'}`;
 
         $('#datatable').DataTable({
             language: {
-                "url": url
+                "url": languageURL
             },
             columnDefs: [{
                 "orderable": false,
-                "targets": 3
+                "targets": $('th').length - 1,
             }, ],
             stateSave: true,
             deferRender: true,
