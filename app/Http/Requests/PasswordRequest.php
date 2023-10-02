@@ -39,7 +39,7 @@ class PasswordRequest extends FormRequest
     public function attributes()
     {
         return [
-            'old_password' => __('current password'),
+            'old_password' => __('Current password'),
         ];
     }
 }

@@ -15,7 +15,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">{{ __('Edit Profile') }}</h3>
+                                <h3 class="mb-0">{{ __('Edit profile') }}</h3>
                             </div>
                             <div class="col-auto">
                                 <div class="dropdown show">
@@ -123,7 +123,7 @@
                                             placeholder="{{ __('Email') }}"
                                             value="{{ old('email', auth()->user()->email) }}"
                                             required>
-                                    
+
                                         @if ($errors->has('email'))
                                             <span class="invalid-feedback"
                                                 role="alert">
@@ -164,12 +164,12 @@
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label"
-                                        for="input-current-password">{{ __('Current Password') }}</label>
+                                        for="input-current-password">{{ __('Current password') }}</label>
                                     <input type="password"
                                         name="old_password"
                                         id="input-current-password"
                                         class="form-control form-control-alternative{{ $errors->has('old_password') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ __('Current Password') }}"
+                                        placeholder="{{ __('Current password') }}"
                                         value=""
                                         required>
 
@@ -182,12 +182,12 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label"
-                                        for="input-password">{{ __('New Password') }}</label>
+                                        for="input-password">{{ __('New password') }}</label>
                                     <input type="password"
                                         name="password"
                                         id="input-password"
                                         class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ __('New Password') }}"
+                                        placeholder="{{ __('New password') }}"
                                         value=""
                                         required>
 
@@ -200,12 +200,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label"
-                                        for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
+                                        for="input-password-confirmation">{{ __('Confirm New password') }}</label>
                                     <input type="password"
                                         name="password_confirmation"
                                         id="input-password-confirmation"
                                         class="form-control form-control-alternative"
-                                        placeholder="{{ __('Confirm New Password') }}"
+                                        placeholder="{{ __('Confirm New password') }}"
                                         value=""
                                         required>
                                 </div>

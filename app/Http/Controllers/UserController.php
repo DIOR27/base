@@ -99,12 +99,7 @@ class UserController extends Controller
         ChatterController::updatedRecordTracking($this, auth()->user(), $request, $user);
         $person = app(PersonController::class)->update($request, $user->person);
 
-        $user->update($request->merge([
-            'person_id' => $person->id,
-            'name' => $person->name,
-            'lastname' => $person->lastname,
-            'password' => $request->get('password') ? bcrypt($request->get('password')) : $user->password,
-        ])->all());
+        $user = app(ToolController::class)->userUpdate($user, $person, $request);
 
         return redirect()->route('user.edit', $user->id);
     }

@@ -45,6 +45,8 @@
     <link href="{{ asset('argon/css/jquery.dataTables.min.css') }}"
         rel="stylesheet" />
 
+    @stack('css')
+
     @laravelPWA
 </head>
 
@@ -65,8 +67,7 @@
     </div>
 
     @if (Route::currentRouteName() != 'login' && Route::currentRouteName() != 'register')
-        @include('layouts.feedback') 
-    @endif
+        @include('layouts.feedback') @endif
     
     @guest()
         @include('layouts.footers.guest')

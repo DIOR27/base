@@ -15,7 +15,10 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $user = auth()->user();
+
+        $chatterObj = ChatterController::addChatter($this, $user->id);
+        return view('profile.edit', compact('user'), $chatterObj);
     }
 
     /**
@@ -26,13 +29,9 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
-        }
+        $user = app(ToolController::class)->userUpdate(auth()->user(), auth()->user()->person, $request);
 
-        auth()->user()->update($request->all());
-
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Profile updated succesfully.'));
     }
 
     /**

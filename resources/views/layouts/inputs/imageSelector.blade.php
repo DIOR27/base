@@ -1,8 +1,10 @@
-<style>
-    .custom-file-input~.custom-file-label::after {
-        content: "{{ __('Browse') }}";
-    }
-</style>
+@push('css')
+    <style>
+        .custom-file-input~.custom-file-label::after {
+            content: "{{ __('Browse') }}";
+        }
+    </style>
+@endpush
 
 <div class="row">
     <div class="col-md-6">

@@ -37,4 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('chatter', App\Http\Controllers\ChatterController::class);
     Route::resource('tool', App\Http\Controllers\ToolController::class, ['except' => ['show', 'edit', 'create']]);
+
+    Route::post('userUpdate', 'App\Http\Controllers\ToolController@userUpdate')->name('userUpdate');
 });

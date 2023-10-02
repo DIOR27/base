@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -29,9 +31,6 @@ class ToolController extends Controller
     public function store(Request $request, Model $model)
     {
         try {
-            // $request->merge(array_map(function ($value) {
-            //     return $value . ' copy';
-            // }, $request->all()));
 
             $request->merge(array_map(function ($value) {
                 return is_string($value) ? $value . ' ' . __('copy') : $value;
@@ -81,5 +80,31 @@ class ToolController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * The function updates a user's information with the provided person and request data.
+     * It allows to update the user in every controller that extends the ToolController.
+     * 
+     * @param User user The "user" parameter is an instance of the User model. It represents the user
+     * that needs to be updated.
+     * @param Person person The "person" parameter is an instance of the "Person" class, which
+     * represents a person's information such as name and lastname.
+     * @param Request request The `` parameter is an instance of the `Request` class, which
+     * represents an HTTP request made to the server. It contains information about the request, such
+     * as the request method, URL, headers, and any data sent with the request.
+     * 
+     * @return User updated User object.
+     */
+    public function userUpdate(User $user, Person $person, Request $request)
+    {
+        $user->update($request->merge([
+            'person_id' => $person->id,
+            'name' => $person->name,
+            'lastname' => $person->lastname,
+            'password' => $request->get('password') ? bcrypt($request->get('password')) : $user->password,
+        ])->all());
+
+        return $user;
     }
 }
