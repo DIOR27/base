@@ -4,7 +4,7 @@
 @section('content')
     @include('layouts.headers.cards')
     
-    <div class="container-fluid">
+    <div>
         @include('layouts.footers.auth')
     </div>
 @endsection
