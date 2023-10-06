@@ -45,6 +45,10 @@
     <link href="{{ asset('argon/css/jquery.dataTables.min.css') }}"
         rel="stylesheet" />
 
+    <!-- Select2 -->
+    <link href="{{ asset('argon/css/argon.css') }}"
+        rel="stylesheet" />
+
     @stack('css')
 
     @laravelPWA
