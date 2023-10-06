@@ -46,7 +46,7 @@
         rel="stylesheet" />
 
     <!-- Select2 -->
-    <link href="{{ asset('argon/css/argon.css') }}"
+    <link href="{{ asset('argon/css/select2.min.css') }}"
         rel="stylesheet" />
 
     @stack('css')
@@ -83,6 +83,7 @@
     <script src="{{ asset('argon/vendor/simple-notify/dist/simple-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
     <script src="{{ asset('argon/vendor/jquery.datatable/dist/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/select2/dist/select2.full.min.js') }}"></script>
 
     @stack('js')
 

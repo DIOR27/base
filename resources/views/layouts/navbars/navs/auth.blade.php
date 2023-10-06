@@ -1,6 +1,7 @@
 <!-- Top navbar -->
 
-<link rel="stylesheet" href="{{ asset('argon/css/languageSelector.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('argon/css/languageSelector.min.css') }}">
 
 <nav class="navbar navbar-top navbar-expand-md navbar-dark"
     id="navbar-main">
