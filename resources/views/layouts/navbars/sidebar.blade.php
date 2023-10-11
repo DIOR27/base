@@ -84,21 +84,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
+                    <a class="nav-link {{ $activeFolder == 'users' ? 'active' : '' }}" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="fas fa-users text-blue"></i>
+                        <span class="nav-link-text text-blue">{{ __('Users') }}</span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.create') }}">
+                                <a class="nav-link {{ $activePage == 'user-profile' ? 'text-blue' : '' }}" href="{{ route('profile.edit') }}">
                                     {{ __('User profile') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link {{ $activePage == 'users' ? 'text-blue' : '' }}" href="{{ route('user.index') }}">
+                                    {{ __('Users management') }}
                                 </a>
                             </li>
                         </ul>
