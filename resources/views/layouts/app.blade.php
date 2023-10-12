@@ -11,7 +11,7 @@
     <meta name="csrf-token"
         content="{{ csrf_token() }}">
     
-    <title>{{ $title }}</title>
+    <title>{{ config('app.name', 'LAVA ERP') }}</title>
     <!-- Favicon -->
     <link href="{{ asset('argon') }}/img/brand/favicon.png"
         rel="icon"
@@ -43,6 +43,8 @@
 
     <!-- DataTable -->
     <link href="{{ asset('argon/css/jquery.dataTables.min.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('argon/css/buttons.dataTables.min.css') }}"
         rel="stylesheet" />
 
     <!-- Select2 -->
@@ -83,6 +85,12 @@
     <script src="{{ asset('argon/vendor/simple-notify/dist/simple-notify.min.js') }}"></script>
     <script src="{{ asset('argon/vendor/sweetalert2/dist/sweetalert2.net_npm_sweetalert2@11') }}"></script>
     <script src="{{ asset('argon/vendor/jquery.datatable/dist/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('argon/vendor/jquery.datatable/dist/vfs_fonts.js') }}"></script>
     <script src="{{ asset('argon/vendor/select2/dist/select2.full.min.js') }}"></script>
 
     @stack('js')

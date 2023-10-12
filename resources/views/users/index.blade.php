@@ -68,13 +68,17 @@
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                     <a class="dropdown-item d-flex align-items-center"
-                                                        href="{{ route('user.edit', $user) }}"><i class="fas fa-pencil-alt text-primary"></i> {{ __('Edit') }}</a>
+                                                        href="{{ route('user.edit', $user) }}"><i
+                                                            class="fas fa-pencil-alt text-primary"></i>
+                                                        {{ __('Edit') }}</a>
                                                     <form action="{{ route('user.destroy', $user) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <a class="dropdown-item d-flex align-items-center"
-                                                            onclick="deleteDialog()"><i class="fas fa-trash text-danger"></i> {{ __('Delete') }}</a>
+                                                            onclick="deleteDialog()"><i
+                                                                class="fas fa-trash text-danger"></i>
+                                                            {{ __('Delete') }}</a>
                                                     </form>
                                                 </div>
                                             </div>
@@ -117,6 +121,10 @@
             stateSave: true,
             deferRender: true,
             orderClasses: false,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
         });
     </script>
 @endpush
