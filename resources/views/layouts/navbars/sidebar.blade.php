@@ -79,17 +79,18 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    <a class="nav-link {{ $activeFolder == 'dashboard' ? 'active' : '' }}" href="{{ route('home') }}" role="button">
+                        <i class="fas fa-tachometer-alt text-danger"></i
+                        <span class="nav-link-text">{{ __('Dashboard') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $activeFolder == 'users' ? 'active' : '' }}" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link {{ $activeFolder == 'users' ? 'active' : '' }}" href="#users-nav" data-toggle="collapse" role="button" aria-expanded="{{ $activeFolder == 'users' ? 'true' : 'false' }}" aria-controls="users-nav">
                         <i class="fas fa-users text-blue"></i>
-                        <span class="nav-link-text text-blue">{{ __('Users') }}</span>
+                        <span class="nav-link-text">{{ __('Users') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse {{ $activeFolder == 'users' ? 'show' : '' }}" id="users-nav">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ $activePage == 'user-profile' ? 'text-blue' : '' }}" href="{{ route('profile.edit') }}">

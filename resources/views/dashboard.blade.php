@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'title' => __('Dashboard'),
+    'activeFolder' => 'dashboard',
+    'activePage' => '',
+])
 
 
 @section('content')
