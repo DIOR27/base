@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         LaravelFrontendPresets\ArgonPreset\ArgonPresetServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -186,6 +187,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Date' => Jenssegers\Date\Date::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ])->toArray(),
 
 ];

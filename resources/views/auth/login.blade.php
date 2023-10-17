@@ -57,6 +57,10 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                 {!! NoCaptcha::renderJs() !!}
+                                 {!! NoCaptcha::display() !!}
+                            </div>
                             <div class="custom-control custom-control-alternative custom-checkbox">
                                 <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="customCheckLogin">
